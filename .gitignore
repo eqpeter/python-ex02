@@ -1,0 +1,23 @@
+# Python 相關
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# 資料檔案
+*.csv
+data/
+
+# 環境相關
+.env
+.venv/
+venv/
+ENV/
+
+# IDE 相關
+.vscode/
+.idea/
+
+# 系統相關
+.DS_Store
+Thumbs.db
