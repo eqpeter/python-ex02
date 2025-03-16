@@ -12,6 +12,8 @@ CSV_FILE = os.path.join(DATA_DIR, 'finance.csv')
 @app.route('/')
 def index():
     load_csv(CSV_FILE)
+    # 在顯示報表前先排序計算排名
+    Income.sort_rate()
     return render_template('index.html', records=Income.all)
 
 @app.route('/add', methods=['POST'])
@@ -23,6 +25,8 @@ def add():
         
         if all(val.strip().isdigit() for val in [year, sales, profit]):
             Income(year, sales, profit)
+            # 新增資料後立即重新排序
+            Income.sort_rate()
             save_to_csv(CSV_FILE)
             
     except Exception as e:
